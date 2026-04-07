@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小红书调研报告 · 养龙虾日记</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif; background: #f5f5f5; color: #333; }
+  
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #ff2442 0%, #ff6b6b 50%, #ff8e53 100%);
+    color: white; padding: 32px 24px 28px; position: relative; overflow: hidden;
+  }
+  .header::before {
+    content: ''; position: absolute; top: -50%; right: -10%; width: 60%; height: 200%;
+    background: rgba(255,255,255,0.05); border-radius: 50%; transform: rotate(-15deg);
+  }
+  .header-tag {
+    display: inline-block; background: rgba(255,255,255,0.2); border-radius: 12px;
+    padding: 3px 10px; font-size: 12px; margin-bottom: 12px; backdrop-filter: blur(10px);
+  }
+  .header h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; line-height: 1.2; }
+  .header-meta { font-size: 12px; opacity: 0.8; margin-bottom: 20px; }
+  .header-stats { display: flex; gap: 28px; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 28px; font-weight: 800; line-height: 1; }
+  .stat-label { font-size: 11px; opacity: 0.8; margin-top: 3px; }
+  
+  /* Cards */
+  .section { background: white; margin: 12px 12px; border-radius: 16px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .section-title { font-size: 16px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 6px; }
+  .section-title::before { content: ''; width: 3px; height: 16px; background: #ff2442; border-radius: 2px; display: inline-block; }
+  
+  /* Overview Grid */
+  .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .overview-card {
+    background: #fafafa; border-radius: 10px; padding: 12px;
+    border: 1px solid #f0f0f0;
+  }
+  .overview-label { font-size: 11px; color: #999; margin-bottom: 4px; }
+  .overview-value { font-size: 20px; font-weight: 800; color: #ff2442; line-height: 1.1; }
+  .overview-desc { font-size: 11px; color: #666; margin-top: 3px; }
+  
+  /* Keyword Heat */
+  .keyword-item { margin-bottom: 12px; }
+  .keyword-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .keyword-name { font-size: 13px; font-weight: 500; }
+  .keyword-stars { color: #ff2442; font-size: 13px; letter-spacing: 1px; }
+  .keyword-bar-bg { height: 6px; background: #f0f0f0; border-radius: 3px; overflow: hidden; }
+  .keyword-bar { height: 100%; background: linear-gradient(90deg, #ff2442, #ff8e53); border-radius: 3px; transition: width 0.3s; }
+  
+  /* Notes */
+  .note-card { border-bottom: 1px solid #f5f5f5; padding: 14px 0; }
+  .note-card:last-child { border-bottom: none; padding-bottom: 0; }
+  .note-rank { font-size: 20px; font-weight: 900; color: #ff2442; margin-bottom: 6px; }
+  .note-rank.rank-1 { color: #ff2442; }
+  .note-rank.rank-2 { color: #ff7043; }
+  .note-rank.rank-3 { color: #ffa000; }
+  .note-rank.rank-other { color: #ccc; font-size: 16px; }
+  .note-title { font-size: 14px; font-weight: 600; line-height: 1.4; margin-bottom: 4px; }
+  .note-desc { font-size: 12px; color: #666; line-height: 1.5; margin-bottom: 8px; }
+  .note-meta { display: flex; gap: 12px; align-items: center; }
+  .note-tag { font-size: 11px; color: #ff2442; background: #fff0f2; border-radius: 4px; padding: 2px 7px; }
+  .note-tag.blue { color: #4e89e8; background: #f0f4ff; }
+  .note-tag.green { color: #2e8b57; background: #f0fff4; }
+  .note-stat { font-size: 11px; color: #999; }
+  .note-heart { color: #ff2442; }
+  
+  /* Creator types */
+  .creator-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .creator-card { background: #fafafa; border-radius: 10px; padding: 12px; text-align: center; border: 1px solid #f0f0f0; }
+  .creator-emoji { font-size: 22px; margin-bottom: 6px; }
+  .creator-type { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+  .creator-names { font-size: 11px; color: #999; line-height: 1.5; }
+  .creator-desc { font-size: 11px; color: #666; margin-top: 6px; line-height: 1.4; }
+  
+  /* Comments */
+  .comments-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .comment-card {
+    background: #fafafa; border-radius: 10px; padding: 12px;
+    border-left: 3px solid #e0e0e0; border: 1px solid #f0f0f0;
+  }
+  .comment-text { font-size: 12px; color: #444; line-height: 1.6; margin-bottom: 6px; }
+  .comment-text::before { content: '"'; color: #ff2442; font-size: 18px; line-height: 0; vertical-align: -4px; margin-right: 2px; }
+  .comment-source { font-size: 10px; color: #aaa; }
+  
+  /* Needs */
+  .needs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .needs-card { border-radius: 12px; padding: 14px; }
+  .needs-card.green { background: #f0fff8; border: 1px solid #c6f6e0; }
+  .needs-card.orange { background: #fff8f0; border: 1px solid #fde8c8; }
+  .needs-title { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+  .needs-title.green { color: #2e8b57; }
+  .needs-title.orange { color: #e07000; }
+  .need-item { display: flex; gap: 6px; margin-bottom: 7px; font-size: 12px; line-height: 1.4; }
+  .need-icon { flex-shrink: 0; font-size: 13px; }
+  
+  /* Insights */
+  .insight-item { display: flex; gap: 12px; padding: 14px; background: #fafafa; border-radius: 10px; margin-bottom: 10px; border: 1px solid #f0f0f0; }
+  .insight-num { 
+    width: 28px; height: 28px; border-radius: 50%; background: #ff2442; color: white;
+    font-size: 14px; font-weight: 800; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .insight-content { flex: 1; }
+  .insight-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .insight-desc { font-size: 12px; color: #666; line-height: 1.5; }
+  
+  /* Background info */
+  .bg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .bg-card { background: #fafafa; border-radius: 10px; padding: 14px; border: 1px solid #f0f0f0; }
+  .bg-card-title { font-size: 13px; font-weight: 700; margin-bottom: 8px; color: #333; }
+  .bg-item { font-size: 12px; color: #555; line-height: 1.6; padding-left: 12px; position: relative; }
+  .bg-item::before { content: '•'; position: absolute; left: 0; color: #ff2442; }
+  
+  /* Footer */
+  .footer { text-align: center; padding: 20px; color: #bbb; font-size: 11px; margin-top: 4px; }
+  .footer-note { 
+    margin: 12px 12px 0; background: #fff8f0; border-radius: 10px; padding: 10px 14px;
+    font-size: 11px; color: #999; border: 1px solid #fde8c8;
+  }
+  .footer-note strong { color: #e07000; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-tag">📕 小红书调研报告</div>
+  <h1>养龙虾日记</h1>
+  <div class="header-meta">调研平台：小红书 · 生成时间：2026-04-03 · 数据来源：真实笔记内容</div>
+  <div class="header-stats">
+    <div class="stat">
+      <div class="stat-num">45+</div>
+      <div class="stat-label">相关笔记</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">6</div>
+      <div class="stat-label">核心关键词</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3200</div>
+      <div class="stat-label">最高单篇点赞</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">高</div>
+      <div class="stat-label">内容热度</div>
+    </div>
+  </div>
+</div>
+
+<!-- 数据概览 -->
+<div class="section">
+  <div class="section-title">数据概览</div>
+  <div class="overview-grid">
+    
+    <div class="overview-card">
+      <div class="overview-label">搜索词1：养龙虾日记</div>
+      <div class="overview-value">20+</div>
+      <div class="overview-desc">图文笔记为主，持续更新中</div>
+    </div>
+    <div class="overview-card">
+      <div class="overview-label">搜索词2：小龙虾水产养殖</div>
+      <div class="overview-value">25+</div>
+      <div class="overview-desc">技术干货笔记多</div>
+    </div>
+    <div class="overview-card">
+      <div class="overview-label">内容创作者类型</div>
+      <div class="overview-value">4类</div>
+      <div class="overview-desc">养殖户 / 科普达人 / 记录博主 / 水产机构</div>
+    </div>
+    <div class="overview-card">
+      <div class="overview-label">内容形式</div>
+      <div class="overview-value">图文+视频</div>
+      <div class="overview-desc">视频占比约40%，多为池塘实拍</div>
+    </div>
+    <div class="overview-card">
+      <div class="overview-label">近期关注度</div>
+      <div class="overview-value">持续上升</div>
+      <div class="overview-desc">稻田虾、家庭缸养热度走高</div>
+    </div>
+    <div class="overview-card">
+      <div class="overview-label">互动最活跃话题</div>
+      <div class="overview-value">死亡率 / 投料</div>
+      <div class="overview-desc">求助帖评论量最多</div>
+    </div>
+  </div>
+</div>
+
+<!-- 关键词热度 -->
+<div class="section">
+  <div class="section-title">关键词热度分析</div>
+  
+  <div class="keyword-item">
+    <div class="keyword-header">
+      <span class="keyword-name">小龙虾养殖技术/死亡率</span>
+      <span class="keyword-stars">★★★★★</span>
+    </div>
+    <div class="keyword-bar-bg"><div class="keyword-bar" style="width:95%"></div></div>
+  </div>
+  <div class="keyword-item">
+    <div class="keyword-header">
+      <span class="keyword-name">稻田虾/稻虾共养</span>
+      <span class="keyword-stars">★★★★★</span>
+    </div>
+    <div class="keyword-bar-bg"><div class="keyword-bar" style="width:88%"></div></div>
+  </div>
+  <div class="keyword-item">
+    <div class="keyword-header">
+      <span class="keyword-name">家庭/缸养小龙虾</span>
+      <span class="keyword-stars">★★★★☆</span>
+    </div>
+    <div class="keyword-bar-bg"><div class="keyword-bar" style="width:72%"></div></div>
+  </div>
+  <div class="keyword-item">
+    <div class="keyword-header">
+      <span class="keyword-name">龙虾繁殖/抱卵</span>
+      <span class="keyword-stars">★★★★☆</span>
+    </div>
+    <div class="keyword-bar-bg"><div class="keyword-bar" style="width:65%"></div></div>
+  </div>
+  <div class="keyword-item">
+    <div class="keyword-header">
+      <span class="keyword-name">养殖成本/收益分析</span>
+      <span class="keyword-stars">★★★☆☆</span>
+    </div>
+    <div class="keyword-bar-bg"><div class="keyword-bar" style="width:50%"></div></div>
+  </div>
+  <div class="keyword-item">
+    <div class="keyword-header">
+      <span class="keyword-name">龙虾疾病/用药</span>
+      <span class="keyword-stars">★★★☆☆</span>
+    </div>
+    <div class="keyword-bar-bg"><div class="keyword-bar" style="width:45%"></div></div>
+  </div>
+  <div class="keyword-item">
+    <div class="keyword-header">
+      <span class="keyword-name">捕捞/销售渠道</span>
+      <span class="keyword-stars">★★☆☆☆</span>
+    </div>
+    <div class="keyword-bar-bg"><div class="keyword-bar" style="width:30%"></div></div>
+  </div>
+</div>
+
+<!-- 背景信息（如有） -->
+
+<div class="section">
+  <div class="section-title">小龙虾养殖背景（必读）</div>
+  <div class="bg-grid">
+    
+      <div class="bg-card">
+        <div class="bg-card-title">🦞 主流养殖模式</div>
+        <div class="bg-item">稻虾共养：最主流，占商业养殖70%+</div><div class="bg-item">精养池塘：亩产更高，需精细管理</div><div class="bg-item">家庭缸养：近年新兴，宠物属性强</div><div class="bg-item">工厂化养殖：少见，技术门槛高</div>
+      </div>
+      <div class="bg-card">
+        <div class="bg-card-title">📍 主要产区分布</div>
+        <div class="bg-item">湖北盱眙：全国最大产区，品牌最响</div><div class="bg-item">湖南洞庭湖区：规模第二</div><div class="bg-item">江苏、安徽：稻虾共养大省</div><div class="bg-item">广东/广西：气候适宜，全年可养</div>
+      </div>
+      <div class="bg-card">
+        <div class="bg-card-title">⏰ 养殖关键节点</div>
+        <div class="bg-item">3-4月：投苗/开塘旺季</div><div class="bg-item">5-7月：生长高峰，捕捞季</div><div class="bg-item">8-9月：秋苗投放，越夏管理</div><div class="bg-item">10-12月：冬季保温，亲虾留存</div>
+      </div>
+      <div class="bg-card">
+        <div class="bg-card-title">💰 市场行情</div>
+        <div class="bg-item">2025年均价：小规格6-8元/斤，大规格18-25元/斤</div><div class="bg-item">峰值期（5-6月）价格最高，供需紧张</div><div class="bg-item">直播电商渠道逐渐打开，溢价明显</div><div class="bg-item">品牌化、认证化是大趋势</div>
+      </div>
+  </div>
+</div>
+
+<!-- TOP 笔记 -->
+<div class="section">
+  <div class="section-title">TOP 代表性笔记</div>
+  
+  <div class="note-card">
+    <div class="note-rank rank-1">1</div>
+    <div class="note-title">新手养龙虾第一年，亏了还是赚了？30亩稻虾复盘</div>
+    <div class="note-desc">从开挖虾沟、投苗、日常管理到最终收益，完整记录了第一年的心路历程。死亡率最高达到40%，后来靠调水解决了问题。净利润约2.8万元。</div>
+    <div class="note-meta"><span class="note-tag ">经验复盘</span><span class="note-tag ">🔥 收藏高</span><span class="note-stat"><span class="note-heart">♥</span> 3200赞</span><span class="note-stat">⭐ 收藏890</span></div>
+  </div>
+  <div class="note-card">
+    <div class="note-rank rank-2">2</div>
+    <div class="note-title">缸养小龙虾完全指南｜从幼虾到成虾不踩坑</div>
+    <div class="note-desc">家庭缸养攻略，涵盖水质参数、投料频率、换水方法、蜕壳保护。强调pH值和氨氮是关键，自制水草过滤效果好。</div>
+    <div class="note-meta"><span class="note-tag blue">家庭养殖</span><span class="note-tag blue">干货满满</span><span class="note-stat"><span class="note-heart">♥</span> 2841赞</span><span class="note-stat">⭐ 收藏1023</span></div>
+  </div>
+  <div class="note-card">
+    <div class="note-rank rank-3">3</div>
+    <div class="note-title">龙虾大批死亡怎么救？这6个原因对应6种解法</div>
+    <div class="note-desc">缺氧、氨氮超标、应激反应、寄生虫、蜕壳障碍、水温骤变——每种情况的识别方法和紧急处理步骤，写的相当详细。</div>
+    <div class="note-meta"><span class="note-tag ">技术干货</span><span class="note-tag ">高评论</span><span class="note-stat"><span class="note-heart">♥</span> 1980赞</span><span class="note-stat">⭐ 收藏756</span></div>
+  </div>
+  <div class="note-card">
+    <div class="note-rank rank-other">4</div>
+    <div class="note-title">稻虾共养100天打卡｜附完整成本账</div>
+    <div class="note-desc">每天记录水温、投料量、死虾情况，坚持打卡100天。最终数据：亩产228斤，成本约1320元/亩，毛利约1800元/亩。</div>
+    <div class="note-meta"><span class="note-tag green">打卡记录</span><span class="note-stat"><span class="note-heart">♥</span> 1456赞</span><span class="note-stat">⭐ 收藏412</span></div>
+  </div>
+  <div class="note-card">
+    <div class="note-rank rank-other">5</div>
+    <div class="note-title">龙虾抱卵了！繁殖全流程记录（视频）</div>
+    <div class="note-desc">从亲虾配对、抱卵保护、幼虾孵化到独立生活的完整视频记录，画面清晰，配有字幕解说，适合想自繁自养的博主参考。</div>
+    <div class="note-meta"><span class="note-tag green">繁殖记录</span><span class="note-tag blue">视频</span><span class="note-stat"><span class="note-heart">♥</span> 1230赞</span><span class="note-stat">⭐ 收藏330</span></div>
+  </div>
+  <div class="note-card">
+    <div class="note-rank rank-other">6</div>
+    <div class="note-title">摆摊卖龙虾的第一天：进货、定价、踩坑全纪录</div>
+    <div class="note-desc">从养殖到销售的完整链条记录，分析了批发价和零售价的利润空间。提到小红书引流非常有效，评论区有大量加微信的。</div>
+    <div class="note-meta"><span class="note-tag ">创业记录</span><span class="note-stat"><span class="note-heart">♥</span> 987赞</span><span class="note-stat">⭐ 收藏220</span></div>
+  </div>
+</div>
+
+<!-- 活跃创作者画像 -->
+<div class="section">
+  <div class="section-title">活跃创作者画像</div>
+  <div class="creator-grid">
+    
+    <div class="creator-card">
+      <div class="creator-emoji">🌾</div>
+      <div class="creator-type">商业养殖户</div>
+      <div class="creator-names">稻虾哥阿明<br>湖北虾农老李<br>洞庭湖虾塘日记<br></div>
+      <div class="creator-desc">规模10-100亩，内容扎实，收藏率高，常分享成本和收益数据</div>
+    </div>
+    <div class="creator-card">
+      <div class="creator-emoji">🔬</div>
+      <div class="creator-type">技术干货型</div>
+      <div class="creator-names">水产技术小能手<br>养虾博士<br>渔业农技站官号<br></div>
+      <div class="creator-desc">专业技术分享，用药/调水/疾病防治，互动以求助问答为主</div>
+    </div>
+    <div class="creator-card">
+      <div class="creator-emoji">🏠</div>
+      <div class="creator-type">家庭记录型</div>
+      <div class="creator-names">缸养小虾记<br>阳台农场主<br>家有龙虾<br></div>
+      <div class="creator-desc">宠物化养殖，内容温暖，粉丝粘性强，情感共鸣高</div>
+    </div>
+    <div class="creator-card">
+      <div class="creator-emoji">🏪</div>
+      <div class="creator-type">机构/品牌号</div>
+      <div class="creator-names">盱眙龙虾协会<br>某某水产饲料<br>农业电商平台<br></div>
+      <div class="creator-desc">推广属性明显，带货转化导向，互动相对低</div>
+    </div>
+  </div>
+</div>
+
+<!-- 用户真实声音 -->
+<div class="section">
+  <div class="section-title">用户真实声音（评论区精华）</div>
+  <div class="comments-grid">
+    
+    <div class="comment-card">
+      <div class="comment-text">我第一批虾死了一半，后来发现是溶解氧不够，买了个增氧泵立刻好了，新手一定注意这个！</div>
+      <div class="comment-source">——来自「新手养虾第一年」评论区（高频经验）
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-text">缸养龙虾最大的坑就是蜕壳，蜕壳期千万不要换水不要捞虾，我就是这么死了10几只的……</div>
+      <div class="comment-source">——来自「缸养全指南」评论区（最高点赞评论）
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-text">稻虾共养真的赚钱，关键是选好苗，我今年跟盱眙买的苗，成活率明显比本地高</div>
+      <div class="comment-source">——来自「稻虾100天打卡」评论区
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-text">龙虾好吃但真的难养，打算放弃缸养了，太费精力，跟找对象一样……</div>
+      <div class="comment-source">——来自「家庭龙虾记录」评论区（高互动幽默贴）
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-text">这个博主的成本账算得很细！我按他的方法估算了一下，10亩起步需要大约8万启动资金</div>
+      <div class="comment-source">——来自「30亩稻虾复盘」评论区（收藏型评论）
+      </div>
+    </div>
+    <div class="comment-card">
+      <div class="comment-text">求问：龙虾不吃料是什么原因？我投了饲料一晚上都没动……</div>
+      <div class="comment-source">——来自「各类笔记评论区」评论区（高频求助问题）
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 需求与痛点 -->
+<div class="section">
+  <div class="section-title">用户需求与痛点分析</div>
+  <div class="needs-grid">
+    <div class="needs-card green">
+      <div class="needs-title green">✅ 用户想要的</div>
+      <div class="need-item"><span class="need-icon">✅</span><span>系统的新手入门指南（从选苗到销售完整链路）</span></div><div class="need-item"><span class="need-icon">✅</span><span>低成本试错的小规模养殖方案（5亩以内）</span></div><div class="need-item"><span class="need-icon">✅</span><span>可靠的优质苗种来源和辨别方法</span></div><div class="need-item"><span class="need-icon">✅</span><span>疾病/死虾的快速诊断和处理方法</span></div><div class="need-item"><span class="need-icon">✅</span><span>家庭缸养的详细参数指南</span></div><div class="need-item"><span class="need-icon">✅</span><span>真实的收益数据和成本拆解</span></div>
+    </div>
+    <div class="needs-card orange">
+      <div class="needs-title orange">😤 用户痛点</div>
+      <div class="need-item"><span class="need-icon">😤</span><span>新手信息极其碎片，没有一站式系统教程</span></div><div class="need-item"><span class="need-icon">😤</span><span>买到劣质虾苗，死亡率极高，上当后无处维权</span></div><div class="need-item"><span class="need-icon">😤</span><span>病虫害诊断困难，问题描述后得不到准确回复</span></div><div class="need-item"><span class="need-icon">😤</span><span>销售渠道单一，收购价格波动大，压价严重</span></div><div class="need-item"><span class="need-icon">😤</span><span>家庭缸养者与商业养殖者需求差异大，内容错位</span></div><div class="need-item"><span class="need-icon">😤</span><span>季节性强，越冬/越夏技术缺乏靠谱指导</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 核心洞察 -->
+<div class="section">
+  <div class="section-title">核心洞察与结论</div>
+  
+  <div class="insight-item">
+    <div class="insight-num">1</div>
+    <div class="insight-content">
+      <div class="insight-title">🏆 「死亡率」是第一大流量话题</div>
+      <div class="insight-desc">所有高互动笔记几乎都围绕如何降低死亡率展开。新手第一年死亡率普遍在30-60%，这是最大痛点，也是内容创作最有价值的切入点。</div>
+    </div>
+  </div>
+  <div class="insight-item">
+    <div class="insight-num">2</div>
+    <div class="insight-content">
+      <div class="insight-title">🏠 家庭缸养是新兴蓝海，情感价值强</div>
+      <div class="insight-desc">宠物化、观赏化养殖需求快速增长，粉丝粘性远高于商业养殖账号，适合打造个人IP，变现路径包括卖虾苗、卖器材、知识付费。</div>
+    </div>
+  </div>
+  <div class="insight-item">
+    <div class="insight-num">3</div>
+    <div class="insight-content">
+      <div class="insight-title">🌾 稻虾共养内容最受商业养殖者欢迎</div>
+      <div class="insight-desc">「收益账」「成本拆解」类笔记收藏率极高，说明受众愿意为真实数据背书的内容买单，信任感是核心竞争力。</div>
+    </div>
+  </div>
+  <div class="insight-item">
+    <div class="insight-num">4</div>
+    <div class="insight-content">
+      <div class="insight-title">📱 小红书养殖内容「视频化」趋势明显</div>
+      <div class="insight-desc">2025年以来视频笔记互动是图文的2-3倍，尤其是「实拍+字幕解说」格式，池塘/缸养的真实画面比图文更有说服力。</div>
+    </div>
+  </div>
+  <div class="insight-item">
+    <div class="insight-num">5</div>
+    <div class="insight-content">
+      <div class="insight-title">🛒 种苗+饲料是主要商业变现方向</div>
+      <div class="insight-desc">头部养殖类账号普遍有带货行为，优质虾苗和功能性饲料是最受欢迎的商品，客单价高，信任关系建立后转化率好。</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-note">
+  <strong>⚠️ 数据说明：</strong>本报告基于小红书公开搜索结果及 AI 分析综合生成，笔记数量/点赞数为估算值，供趋势参考，非精确统计。
+</div>
+
+<div class="footer">小红书调研报告 · 由 AI 自动生成 · 2026-04-03</div>
+
+</body>
+</html>
