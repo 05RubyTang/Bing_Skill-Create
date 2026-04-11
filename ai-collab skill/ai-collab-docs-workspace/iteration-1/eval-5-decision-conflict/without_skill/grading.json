@@ -1,0 +1,26 @@
+{
+  "eval_id": 5,
+  "configuration": "without_skill",
+  "assertions": [
+    {
+      "text": "AI explicitly mentions the conflict with V-1 before proceeding to implement",
+      "passed": false,
+      "evidence": "Baseline immediately started implementing color-coding. No mention of any decision conflict or existing constraints. First word was 'Sure!'"
+    },
+    {
+      "text": "AI quotes or references the V-1 decision and its reason",
+      "passed": false,
+      "evidence": "Baseline has no awareness of DECISIONS.md or V-1. It treated the request as a straightforward implementation task."
+    },
+    {
+      "text": "AI asks whether to revise the decision or find an alternative approach",
+      "passed": false,
+      "evidence": "Baseline asked only technical clarifying questions (existing code to integrate with) — no decision governance questions"
+    },
+    {
+      "text": "AI does not immediately implement color-coding without user confirming decision revision",
+      "passed": false,
+      "evidence": "Baseline provided a complete implementation plan and offered to 'write the full implementation' without any mention of the decision conflict. Directly implements the conflicting feature."
+    }
+  ]
+}

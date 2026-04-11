@@ -1,0 +1,31 @@
+{
+  "eval_id": 1,
+  "configuration": "with_skill",
+  "assertions": [
+    {
+      "text": "HANDOFF.md is created and contains no unfilled {placeholder} patterns",
+      "passed": true,
+      "evidence": "HANDOFF.md was created with all placeholders replaced with project-specific content (Flux, React, Node.js, frontend developer role)"
+    },
+    {
+      "text": "CONTEXT.md mentions React, Node.js or Flux",
+      "passed": true,
+      "evidence": "CONTEXT.md explicitly mentions React, Node.js, and Flux in the project description and architecture sections"
+    },
+    {
+      "text": "DECISIONS.md contains at least one markdown table with category headers",
+      "passed": true,
+      "evidence": "DECISIONS.md has properly formatted markdown tables for Product Direction and Technical Architecture categories"
+    },
+    {
+      "text": "AI creates or offers to create a conversations/ directory",
+      "passed": true,
+      "evidence": "Response explicitly states conversations/ directory was created and explains its purpose"
+    },
+    {
+      "text": "AI provides explanation of each document, not just says 'done'",
+      "passed": true,
+      "evidence": "Response has a dedicated section explaining what each document does and how the next session will feel, not just 'done'"
+    }
+  ]
+}

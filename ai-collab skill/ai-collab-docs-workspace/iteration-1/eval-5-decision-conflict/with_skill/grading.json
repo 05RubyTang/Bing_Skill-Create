@@ -1,0 +1,26 @@
+{
+  "eval_id": 5,
+  "configuration": "with_skill",
+  "assertions": [
+    {
+      "text": "AI explicitly mentions the conflict with V-1 before proceeding to implement",
+      "passed": true,
+      "evidence": "First thing AI says is 'Heads up — this conflicts with a locked decision' before presenting any implementation options"
+    },
+    {
+      "text": "AI quotes or references the V-1 decision and its reason",
+      "passed": true,
+      "evidence": "AI explicitly quotes V-1: 'Minimal UI — no colors except system defaults' and its reason 'Blend with macOS aesthetic' with the confirmation date"
+    },
+    {
+      "text": "AI asks whether to revise the decision or find an alternative approach",
+      "passed": true,
+      "evidence": "AI offers three explicit options (revise V-1, use system calendar colors as a compromise, keep V-1 and find non-color solution) and asks 'What would you like to do?'"
+    },
+    {
+      "text": "AI does not immediately implement color-coding without user confirming decision revision",
+      "passed": true,
+      "evidence": "AI presents options and explicitly says 'If you want to revise V-1, just say the word' — does not implement anything without confirmation"
+    }
+  ]
+}

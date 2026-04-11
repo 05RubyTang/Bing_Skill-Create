@@ -1,0 +1,11 @@
+{
+  "eval_id": 3,
+  "eval_name": "setup-research",
+  "prompt": "Help me set up collaboration docs for a UX research project. I'm writing a research report on pain points in food delivery apps. I've done 10 user interviews and have a survey with 150 responses. My role is the researcher — I make all decisions about the report structure and conclusions. AI helps me draft and revise the writing. The report needs to be done in 2 weeks. Already decided: report will be in English, max 15 pages, structured as: Executive Summary → Methodology → Findings → Recommendations.",
+  "assertions": [
+    {"name": "No inappropriate code terminology", "text": "Documents do not use terms like 'tech stack', 'refactor', 'deploy', 'data model' inappropriately for a writing project"},
+    {"name": "Report structure logged in DECISIONS.md", "text": "DECISIONS.md includes the 4-section structure (Executive Summary, Methodology, Findings, Recommendations)"},
+    {"name": "CONTEXT.md reflects research phase", "text": "CONTEXT.md mentions interviews completed, survey data, or writing phase"},
+    {"name": "Page limit decision logged", "text": "DECISIONS.md includes the 15-page maximum constraint"}
+  ]
+}

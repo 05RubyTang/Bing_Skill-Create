@@ -1,0 +1,26 @@
+{
+  "eval_id": 4,
+  "configuration": "without_skill",
+  "assertions": [
+    {
+      "text": "AI reads the provided docs and summarizes project state without asking user to explain it",
+      "passed": false,
+      "evidence": "Baseline did not acknowledge reading the HANDOFF.md / CONTEXT.md / DECISIONS.md content — jumped straight to technical implementation without confirming project context"
+    },
+    {
+      "text": "AI breaks the refresh interval task into numbered steps and asks for confirmation",
+      "passed": false,
+      "evidence": "Baseline provided a technical implementation plan but did NOT ask for checkpoint confirmation before proceeding — it offered to 'write the full implementation' directly"
+    },
+    {
+      "text": "AI does not propose a backend or remote sync feature (would conflict with T-2)",
+      "passed": true,
+      "evidence": "Baseline correctly suggested UserDefaults (local storage) for the interval setting — not because it read T-2, but because it's the natural Swift approach"
+    },
+    {
+      "text": "AI first response does not ask what the project is or what has been done",
+      "passed": true,
+      "evidence": "Baseline did not ask what the project is — it picked up from the prompt context. However this is not because of the docs system, just because the project info was in the message."
+    }
+  ]
+}

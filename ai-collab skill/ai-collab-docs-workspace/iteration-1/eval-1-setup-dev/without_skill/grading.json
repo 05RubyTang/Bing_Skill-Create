@@ -1,0 +1,31 @@
+{
+  "eval_id": 1,
+  "configuration": "without_skill",
+  "assertions": [
+    {
+      "text": "HANDOFF.md is created and contains no unfilled {placeholder} patterns",
+      "passed": false,
+      "evidence": "No HANDOFF.md was created at all. Baseline offered generic advice (PROJECT_SUMMARY.md, CLAUDE.md) but did not generate the structured collaboration documents"
+    },
+    {
+      "text": "CONTEXT.md mentions React, Node.js or Flux",
+      "passed": false,
+      "evidence": "No CONTEXT.md was created"
+    },
+    {
+      "text": "DECISIONS.md contains at least one markdown table with category headers",
+      "passed": false,
+      "evidence": "No DECISIONS.md was created"
+    },
+    {
+      "text": "AI creates or offers to create a conversations/ directory",
+      "passed": false,
+      "evidence": "No conversations/ directory was mentioned or created"
+    },
+    {
+      "text": "AI provides explanation of each document, not just says 'done'",
+      "passed": false,
+      "evidence": "No documents were created, so no explanation was given. Baseline gave generic suggestions instead"
+    }
+  ]
+}

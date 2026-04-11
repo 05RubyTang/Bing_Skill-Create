@@ -1,0 +1,26 @@
+{
+  "eval_id": 2,
+  "configuration": "with_skill",
+  "assertions": [
+    {
+      "text": "All generated documents are primarily in Chinese",
+      "passed": true,
+      "evidence": "HANDOFF.md and DECISIONS.md are fully in Chinese, all section headers, content and explanations are in Chinese"
+    },
+    {
+      "text": "DECISIONS.md includes entries for OpenAI API only, Markdown output format, and CLI only",
+      "passed": true,
+      "evidence": "DECISIONS.md has T-1 (OpenAI API only), T-2 (CLI only, no UI), O-1 (Markdown output) — all three decisions pre-populated with reasons"
+    },
+    {
+      "text": "HANDOFF.md project description reflects the actual project described",
+      "passed": true,
+      "evidence": "HANDOFF.md mentions 小红书 content generation, Python, CLI, OpenAI API in the project overview"
+    },
+    {
+      "text": "None of the generated files contain {placeholder} or similar unfilled template tokens",
+      "passed": true,
+      "evidence": "Both HANDOFF.md and DECISIONS.md have all content filled in with project-specific information, no {placeholder} patterns found"
+    }
+  ]
+}

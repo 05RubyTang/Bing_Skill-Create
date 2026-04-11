@@ -1,0 +1,97 @@
+{
+  "skill_name": "ai-collab-docs",
+  "iteration": 1,
+  "configurations": [
+    {
+      "name": "with_skill",
+      "evals": [
+        {
+          "eval_id": 1,
+          "eval_name": "setup-dev",
+          "assertions_total": 5,
+          "assertions_passed": 5,
+          "pass_rate": 1.0
+        },
+        {
+          "eval_id": 2,
+          "eval_name": "setup-chinese",
+          "assertions_total": 4,
+          "assertions_passed": 4,
+          "pass_rate": 1.0
+        },
+        {
+          "eval_id": 3,
+          "eval_name": "setup-research",
+          "assertions_total": 4,
+          "assertions_passed": 4,
+          "pass_rate": 1.0
+        },
+        {
+          "eval_id": 4,
+          "eval_name": "maintenance-auto",
+          "assertions_total": 4,
+          "assertions_passed": 4,
+          "pass_rate": 1.0
+        },
+        {
+          "eval_id": 5,
+          "eval_name": "decision-conflict",
+          "assertions_total": 4,
+          "assertions_passed": 4,
+          "pass_rate": 1.0
+        }
+      ],
+      "overall_pass_rate": 1.0,
+      "assertions_total": 21,
+      "assertions_passed": 21
+    },
+    {
+      "name": "without_skill",
+      "evals": [
+        {
+          "eval_id": 1,
+          "eval_name": "setup-dev",
+          "assertions_total": 5,
+          "assertions_passed": 0,
+          "pass_rate": 0.0
+        },
+        {
+          "eval_id": 2,
+          "eval_name": "setup-chinese",
+          "assertions_total": 4,
+          "assertions_passed": 0,
+          "pass_rate": 0.0
+        },
+        {
+          "eval_id": 3,
+          "eval_name": "setup-research",
+          "assertions_total": 4,
+          "assertions_passed": 1,
+          "pass_rate": 0.25
+        },
+        {
+          "eval_id": 4,
+          "eval_name": "maintenance-auto",
+          "assertions_total": 4,
+          "assertions_passed": 2,
+          "pass_rate": 0.5
+        },
+        {
+          "eval_id": 5,
+          "eval_name": "decision-conflict",
+          "assertions_total": 4,
+          "assertions_passed": 0,
+          "pass_rate": 0.0
+        }
+      ],
+      "overall_pass_rate": 0.143,
+      "assertions_total": 21,
+      "assertions_passed": 3
+    }
+  ],
+  "delta": {
+    "pass_rate": 0.857,
+    "with_skill_total": 21,
+    "without_skill_total": 3
+  }
+}

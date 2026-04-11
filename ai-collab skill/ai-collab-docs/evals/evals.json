@@ -1,0 +1,129 @@
+{
+  "skill_name": "ai-collab-docs",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I've been using AI to help build my React + Node.js side project for a few weeks but every single session I have to spend like 10 minutes explaining what we're building and where we left off. It's really frustrating. The project is a task management app called 'Flux' — I'm a frontend developer, the backend is mostly done, now I'm working on the React UI. Can you help me fix this problem?",
+      "expected_output": "AI should recognize this as a setup request, ask a few clarifying questions (project stage, existing decisions, communication style), then generate HANDOFF.md, CONTEXT.md, DECISIONS.md, and conversations/ directory. Documents should be customized to a developer context (batch mode acceptable, technical language), filled in with the project details provided (React + Node.js, task management app, frontend phase), and have no unfilled placeholders.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "HANDOFF.md created with no placeholders",
+          "check": "HANDOFF.md exists and contains no {placeholder} patterns"
+        },
+        {
+          "name": "CONTEXT.md reflects the project described",
+          "check": "CONTEXT.md mentions React, Node.js, and Flux (or the task management context)"
+        },
+        {
+          "name": "DECISIONS.md has proper table structure",
+          "check": "DECISIONS.md contains at least one category table with proper markdown table format"
+        },
+        {
+          "name": "conversations/ directory created",
+          "check": "A conversations/ directory exists (or is offered to be created)"
+        },
+        {
+          "name": "AI explains what each document does",
+          "check": "AI provides a brief summary of each document's purpose, not just 'done'"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "我在做一个小红书笔记生成工具，Python写的，用来帮用户自动生成小红书风格的文案。项目已经进行了一个多月了，代码有了，但是我每次跟AI协作都要重新解释一遍背景，特别烦。帮我建立一套AI协作文档系统吧。已经确定的技术决策：用OpenAI API，不用其他模型；输出格式固定是Markdown；不做UI，只做命令行工具。",
+      "expected_output": "AI应该识别为初始化请求，用中文交流，询问补充信息（项目阶段、角色分工等），然后生成全中文的四个文档。DECISIONS.md应该预填充用户已提到的三个技术决策（OpenAI API、Markdown输出、命令行工具）。",
+      "files": [],
+      "assertions": [
+        {
+          "name": "Documents generated in Chinese",
+          "check": "All generated documents (HANDOFF.md, CONTEXT.md, DECISIONS.md) are primarily in Chinese"
+        },
+        {
+          "name": "Three existing decisions pre-populated in DECISIONS.md",
+          "check": "DECISIONS.md contains entries for: OpenAI API only, Markdown output format, CLI only (no UI)"
+        },
+        {
+          "name": "HANDOFF.md mentions 小红书 or content generation context",
+          "check": "HANDOFF.md project description reflects the actual project described"
+        },
+        {
+          "name": "No placeholders remain in any document",
+          "check": "None of the generated files contain {placeholder} or similar unfilled template tokens"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Help me set up collaboration docs for a UX research project. I'm writing a research report on pain points in food delivery apps. I've done 10 user interviews and have a survey with 150 responses. My role is the researcher — I make all decisions about the report structure and conclusions. AI helps me draft and revise the writing. The report needs to be done in 2 weeks. Already decided: report will be in English, max 15 pages, structured as: Executive Summary → Methodology → Findings → Recommendations.",
+      "expected_output": "AI should recognize this is a non-code project and adapt the language accordingly — no 'tech stack', 'refactoring', 'data model' etc. Documents should use domain-appropriate terms (sections, content structure, restructuring). DECISIONS.md should pre-populate the confirmed decisions (English, 15-page limit, 4-section structure). CONTEXT.md should reflect the research stage (data collected, report writing in progress).",
+      "files": [],
+      "assertions": [
+        {
+          "name": "No code-specific terminology in documents",
+          "check": "Documents do not use terms like 'tech stack', 'refactor', 'deploy', 'data model' in a way that's inappropriate for a writing project"
+        },
+        {
+          "name": "Report structure decision logged in DECISIONS.md",
+          "check": "DECISIONS.md includes the 4-section structure (Executive Summary, Methodology, Findings, Recommendations)"
+        },
+        {
+          "name": "CONTEXT.md reflects research phase",
+          "check": "CONTEXT.md mentions interviews completed, survey data collected, or writing phase"
+        },
+        {
+          "name": "Page limit decision logged",
+          "check": "DECISIONS.md includes the 15-page maximum constraint"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I'm starting a new session on my project. Here's the project state:\n\n[HANDOFF.md content]\n# AI Collaboration Handoff — Orbit\n> Read this at the start of every new session.\n\n## Project Overview\nName: Orbit\nDescription: A macOS menu bar app that shows your upcoming calendar events\nStage: Mid-development\nTech stack: Swift + SwiftUI, EventKit\n\n## Collaboration Rhythm\nCheckpoint mode: AI breaks tasks into steps, waits before each.\n\n[CONTEXT.md content]\n# Orbit — Current State\n> Last updated: 2026-04-08\n\n## What's Been Completed\n- Menu bar icon and popover window working\n- EventKit integration — can read events\n- Basic event list display\n\n## In Progress\n- Event detail view (tap to expand)\n\n## Next Steps\n- [ ] Event detail view\n- [ ] Refresh interval setting\n- [ ] Launch at login toggle\n\n[DECISIONS.md content]\n| T-1 | Swift + SwiftUI only | Native macOS feel | 2026-04-01 |\n| T-2 | No backend | Local EventKit only, no sync | 2026-04-01 |\n| V-1 | Minimal UI — no colors except system defaults | Blend with macOS aesthetic | 2026-04-05 |\n\nOkay, let's add the refresh interval setting today.",
+      "expected_output": "AI should detect the existing HANDOFF.md, automatically enter maintenance mode, briefly confirm the project state (Orbit, what's been done, current next step), then proceed to help with the refresh interval setting. It should follow checkpoint rhythm (decompose into steps, wait for approval). It should NOT ask the user to re-explain the project.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "AI enters maintenance mode automatically",
+          "check": "AI reads the provided docs and summarizes the project state without asking the user to explain it"
+        },
+        {
+          "name": "AI follows checkpoint rhythm",
+          "check": "AI breaks the refresh interval task into numbered steps and asks for confirmation before executing"
+        },
+        {
+          "name": "AI respects existing decisions",
+          "check": "AI does not propose a backend or remote sync feature (conflicts with T-2)"
+        },
+        {
+          "name": "AI does not ask user to re-explain the project",
+          "check": "AI's first response does not contain questions asking what the project is or what's been done"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "We've been working on Orbit (the macOS calendar app). DECISIONS.md has V-1: 'Minimal UI — no colors except system defaults.' Now I want to add color-coding for different calendar categories — like red for personal, blue for work, green for health. Can you implement that?",
+      "expected_output": "AI should recognize the conflict with decision V-1 and surface it explicitly before implementing anything. It should show the user the existing decision, explain the conflict, and ask whether to revise the decision or approach this differently. It should NOT silently implement the color-coding.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "AI surfaces the decision conflict",
+          "check": "AI explicitly mentions the conflict with V-1 before proceeding to implement"
+        },
+        {
+          "name": "AI shows the existing decision",
+          "check": "AI quotes or references the V-1 decision and its reason"
+        },
+        {
+          "name": "AI asks for explicit confirmation before overriding",
+          "check": "AI asks the user whether to revise the decision or find an alternative approach"
+        },
+        {
+          "name": "AI does not silently implement the conflicting feature",
+          "check": "AI does not proceed with color-coding implementation without user explicitly confirming the decision revision"
+        }
+      ]
+    }
+  ]
+}

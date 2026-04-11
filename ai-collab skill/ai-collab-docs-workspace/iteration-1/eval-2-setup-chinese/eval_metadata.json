@@ -1,0 +1,11 @@
+{
+  "eval_id": 2,
+  "eval_name": "setup-chinese",
+  "prompt": "我在做一个小红书笔记生成工具，Python写的，用来帮用户自动生成小红书风格的文案。项目已经进行了一个多月了，代码有了，但是我每次跟AI协作都要重新解释一遍背景，特别烦。帮我建立一套AI协作文档系统吧。已经确定的技术决策：用OpenAI API，不用其他模型；输出格式固定是Markdown；不做UI，只做命令行工具。",
+  "assertions": [
+    {"name": "Documents generated in Chinese", "text": "All generated documents are primarily in Chinese"},
+    {"name": "Three existing decisions pre-populated", "text": "DECISIONS.md includes entries for OpenAI API only, Markdown output, and CLI only"},
+    {"name": "HANDOFF.md reflects project context", "text": "HANDOFF.md mentions 小红书 or content generation context"},
+    {"name": "No placeholders remain", "text": "None of the generated files contain {placeholder} or similar unfilled template tokens"}
+  ]
+}

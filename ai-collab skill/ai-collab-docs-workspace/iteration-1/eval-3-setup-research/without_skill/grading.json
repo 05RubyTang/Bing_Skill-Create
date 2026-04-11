@@ -1,0 +1,26 @@
+{
+  "eval_id": 3,
+  "configuration": "without_skill",
+  "assertions": [
+    {
+      "text": "Documents do not use terms like 'tech stack', 'refactor', 'deploy', 'data model' inappropriately for a writing project",
+      "passed": true,
+      "evidence": "Baseline response appropriately used research language (thematic analysis, Methodology, Findings) — but this is because no structured documents were created, just a conversational response"
+    },
+    {
+      "text": "DECISIONS.md includes the 4-section structure (Executive Summary, Methodology, Findings, Recommendations)",
+      "passed": false,
+      "evidence": "No DECISIONS.md was created. The baseline only asked clarifying questions."
+    },
+    {
+      "text": "CONTEXT.md mentions interviews completed, survey data, or writing phase",
+      "passed": false,
+      "evidence": "No CONTEXT.md was created"
+    },
+    {
+      "text": "DECISIONS.md includes the 15-page maximum constraint",
+      "passed": false,
+      "evidence": "No DECISIONS.md was created. The baseline acknowledged the constraint but did not record it anywhere persistent."
+    }
+  ]
+}

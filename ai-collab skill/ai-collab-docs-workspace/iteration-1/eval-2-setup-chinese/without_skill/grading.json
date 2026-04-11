@@ -1,0 +1,26 @@
+{
+  "eval_id": 2,
+  "configuration": "without_skill",
+  "assertions": [
+    {
+      "text": "All generated documents are primarily in Chinese",
+      "passed": false,
+      "evidence": "No structured documents were generated. Baseline response was in Chinese but only offered generic tips (README, CLAUDE.md) rather than creating the actual documents"
+    },
+    {
+      "text": "DECISIONS.md includes entries for OpenAI API only, Markdown output format, and CLI only",
+      "passed": false,
+      "evidence": "No DECISIONS.md was created"
+    },
+    {
+      "text": "HANDOFF.md project description reflects the actual project described",
+      "passed": false,
+      "evidence": "No HANDOFF.md was created"
+    },
+    {
+      "text": "None of the generated files contain {placeholder} or similar unfilled template tokens",
+      "passed": false,
+      "evidence": "No files were generated at all"
+    }
+  ]
+}

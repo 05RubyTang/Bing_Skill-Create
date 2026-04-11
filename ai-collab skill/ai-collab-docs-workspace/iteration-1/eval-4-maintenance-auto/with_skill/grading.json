@@ -1,0 +1,26 @@
+{
+  "eval_id": 4,
+  "configuration": "with_skill",
+  "assertions": [
+    {
+      "text": "AI reads the provided docs and summarizes project state without asking user to explain it",
+      "passed": true,
+      "evidence": "AI opens with a structured project summary (Orbit, stack, rhythm, last known state, what's next) without asking the user any context questions"
+    },
+    {
+      "text": "AI breaks the refresh interval task into numbered steps and asks for confirmation",
+      "passed": true,
+      "evidence": "AI presents a 4-step numbered checklist (decide intervals, store preference, wire timer, add UI) and explicitly asks 'Confirm the list and I'll start from step 1'"
+    },
+    {
+      "text": "AI does not propose a backend or remote sync feature (would conflict with T-2)",
+      "passed": true,
+      "evidence": "AI only mentions UserDefaults for storage — local persistence, consistent with T-2 (no backend). No mention of remote sync or server-side storage."
+    },
+    {
+      "text": "AI first response does not ask what the project is or what has been done",
+      "passed": true,
+      "evidence": "First paragraph is a project state summary (not questions). AI asks only task-specific questions (where should the UI appear? what intervals?) not project context questions."
+    }
+  ]
+}

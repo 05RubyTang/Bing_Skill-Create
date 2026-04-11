@@ -1,0 +1,26 @@
+{
+  "eval_id": 3,
+  "configuration": "with_skill",
+  "assertions": [
+    {
+      "text": "Documents do not use terms like 'tech stack', 'refactor', 'deploy', 'data model' inappropriately for a writing project",
+      "passed": true,
+      "evidence": "HANDOFF.md uses research-appropriate language: 'sections', 'drafts', 'argument framing', 'thematic analysis'. No code-specific terms used inappropriately."
+    },
+    {
+      "text": "DECISIONS.md includes the 4-section structure (Executive Summary, Methodology, Findings, Recommendations)",
+      "passed": true,
+      "evidence": "DECISIONS.md F-3 explicitly records: 'Four-section structure: Executive Summary → Methodology → Findings → Recommendations'"
+    },
+    {
+      "text": "CONTEXT.md mentions interviews completed, survey data, or writing phase",
+      "passed": true,
+      "evidence": "Response explicitly mentions 10 interviews + 150 surveys as data collection complete, analysis/writing in progress — and HANDOFF.md stage is 'Data collection complete; analysis and writing phase'"
+    },
+    {
+      "text": "DECISIONS.md includes the 15-page maximum constraint",
+      "passed": true,
+      "evidence": "DECISIONS.md F-2 explicitly records: 'Maximum 15 pages' with reason 'Stakeholder constraint — they won't read more'"
+    }
+  ]
+}

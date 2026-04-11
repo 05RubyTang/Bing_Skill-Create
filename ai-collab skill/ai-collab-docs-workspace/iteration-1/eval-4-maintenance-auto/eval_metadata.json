@@ -1,0 +1,11 @@
+{
+  "eval_id": 4,
+  "eval_name": "maintenance-auto",
+  "prompt": "I'm starting a new session on my project. Here's the project state:\n\n[HANDOFF.md content]\n# AI Collaboration Handoff — Orbit\n> Read this at the start of every new session.\n\n## Project Overview\nName: Orbit\nDescription: A macOS menu bar app that shows your upcoming calendar events\nStage: Mid-development\nTech stack: Swift + SwiftUI, EventKit\n\n## Collaboration Rhythm\nCheckpoint mode: AI breaks tasks into steps, waits before each.\n\n[CONTEXT.md content]\n# Orbit — Current State\n> Last updated: 2026-04-08\n\n## What's Been Completed\n- Menu bar icon and popover window working\n- EventKit integration — can read events\n- Basic event list display\n\n## In Progress\n- Event detail view (tap to expand)\n\n## Next Steps\n- [ ] Event detail view\n- [ ] Refresh interval setting\n- [ ] Launch at login toggle\n\n[DECISIONS.md content]\n| T-1 | Swift + SwiftUI only | Native macOS feel | 2026-04-01 |\n| T-2 | No backend | Local EventKit only, no sync | 2026-04-01 |\n| V-1 | Minimal UI — no colors except system defaults | Blend with macOS aesthetic | 2026-04-05 |\n\nOkay, let's add the refresh interval setting today.",
+  "assertions": [
+    {"name": "AI enters maintenance mode automatically", "text": "AI reads the provided docs and summarizes project state without asking user to explain it"},
+    {"name": "AI follows checkpoint rhythm", "text": "AI breaks the refresh interval task into numbered steps and asks for confirmation"},
+    {"name": "AI respects existing decisions (no backend)", "text": "AI does not propose a backend or remote sync feature (would conflict with T-2)"},
+    {"name": "AI does not ask user to re-explain", "text": "AI first response does not ask what the project is or what has been done"}
+  ]
+}

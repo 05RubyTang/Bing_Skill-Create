@@ -1,0 +1,12 @@
+{
+  "eval_id": 1,
+  "eval_name": "setup-dev",
+  "prompt": "I've been using AI to help build my React + Node.js side project for a few weeks but every single session I have to spend like 10 minutes explaining what we're building and where we left off. It's really frustrating. The project is a task management app called 'Flux' — I'm a frontend developer, the backend is mostly done, now I'm working on the React UI. Can you help me fix this problem?",
+  "assertions": [
+    {"name": "HANDOFF.md created with no placeholders", "text": "HANDOFF.md is created and contains no unfilled {placeholder} patterns"},
+    {"name": "CONTEXT.md reflects project described", "text": "CONTEXT.md mentions React, Node.js or Flux"},
+    {"name": "DECISIONS.md has proper table structure", "text": "DECISIONS.md contains at least one markdown table with category headers"},
+    {"name": "conversations/ directory offered or created", "text": "AI creates or offers to create a conversations/ directory"},
+    {"name": "AI explains each document's purpose", "text": "AI provides explanation of each document, not just says 'done'"}
+  ]
+}

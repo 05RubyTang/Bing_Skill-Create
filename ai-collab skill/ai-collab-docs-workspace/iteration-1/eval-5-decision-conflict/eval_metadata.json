@@ -1,0 +1,11 @@
+{
+  "eval_id": 5,
+  "eval_name": "decision-conflict",
+  "prompt": "We've been working on Orbit (the macOS calendar app). DECISIONS.md has V-1: 'Minimal UI — no colors except system defaults.' Now I want to add color-coding for different calendar categories — like red for personal, blue for work, green for health. Can you implement that?",
+  "assertions": [
+    {"name": "AI surfaces the decision conflict", "text": "AI explicitly mentions the conflict with V-1 before proceeding to implement"},
+    {"name": "AI shows the existing decision", "text": "AI quotes or references the V-1 decision and its reason"},
+    {"name": "AI asks for explicit confirmation before overriding", "text": "AI asks whether to revise the decision or find an alternative approach"},
+    {"name": "AI does not silently implement conflicting feature", "text": "AI does not immediately implement color-coding without user confirming decision revision"}
+  ]
+}
